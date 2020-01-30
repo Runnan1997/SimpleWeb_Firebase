@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "style.css" />
+    <title>Firebase login</title>
+</head>
+
+<style type="text/css">
+    body{
+        background-image:url("img/background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:100%;
+    }
+</style>
+
+<body>
+    <div class="main-div" id="login-div">
+        <h3>Firebase Login</h3>
+        <input type ="emailadderss" placeholder="Email Address..." id="email_field"/>
+        <input type ="password" placeholder="Password..." id="passward_field"/>
+
+        <button onclick="login()">Login</button>
+        <p></p>
+        <button onclick="signup()">Sign Up</button>
+        
+    </div>
+
+
+    <div id = "s-div" class = "su-div">
+		<h3>You have signed up successfully</h3>
+		<p id="user_para">Welcome to our website</p>
+		<button onclick="login()">Login</button>
+    </div>
+
+
+    <div id = "user-div" class = "loggedin-div">
+		<h3>Welcome User</h3>
+		<p id="user_para">Welcome to our website. You are logged in.</p>
+		<button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCmK-ufQrNKeFrwh9rp39hRywNRhf6dR4M",
+        authDomain: "loginweb-e68d8.firebaseapp.com",
+        databaseURL: "https://loginweb-e68d8.firebaseio.com",
+        projectId: "loginweb-e68d8",
+        storageBucket: "loginweb-e68d8.appspot.com",
+        messagingSenderId: "132737705799",
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="index.js"></script>
+    
+    
+</body>
+</html>
