@@ -1,0 +1,23 @@
+{
+  "name": "simpleweb_firebase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Runnan1997/SimpleWeb_Firebase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Runnan1997/SimpleWeb_Firebase/issues"
+  },
+  "homepage": "https://github.com/Runnan1997/SimpleWeb_Firebase#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

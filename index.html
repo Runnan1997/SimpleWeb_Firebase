@@ -1,65 +1,320 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" href = "style.css" />
-    <title>Firebase login</title>
+    <title>User Information & Housing Benefits Submission</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        input::placeholder, select {
+            color: #666;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-year-button {
+            background-color: #28a745;
+        }
+
+        .year-section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-container button {
+            width: 200px;
+        }
+
+        @media (max-width: 600px) {
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            input, select, button {
+                font-size: 0.95rem;
+                padding: 10px;
+            }
+
+            .year-section {
+                padding: 10px;
+            }
+        }
+
+        #moveDateContainer {
+            display: none;
+        }
+    </style>
 </head>
-
-<style type="text/css">
-    body{
-        background-image:url("img/background.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        height:100%;
-    }
-</style>
-
 <body>
-    <div class="main-div" id="login-div">
-        <h3>Firebase Login</h3>
-        <input type ="emailadderss" placeholder="Email Address..." id="email_field"/>
-        <input type ="password" placeholder="Password..." id="passward_field"/>
-
-        <button onclick="login()">Login</button>
-        <p></p>
-        <button onclick="signup()">Sign Up</button>
-        
+    <div class="form-container">
+        <div class="main-div" id="form-div">
+            <h3>Tax Information Form</h3>
+            <form id="combinedForm">
+                <input type="text" placeholder="First Name 名" id="firstName" required>
+                <input type="text" placeholder="Last Name 姓" id="lastName" required>
+                <input type="text" placeholder="Social Insurance Number (SIN)" id="sin" required>
+                <input type="text" placeholder="DOB 出生年月日 (YYYY-MM-DD)" id="dob" required>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                <script>
+                    flatpickr("#dob", { dateFormat: "Y-m-d" });
+                </script>
+                <input type="text" placeholder="Province/Territory as of Dec 31, 2024 2024年12月31日所住省份" id="province2024" required>
+                <input type="text" placeholder="Mailing Address(unit, street, city, province) 邮寄地址" id="address" required>
+                <input type="text" placeholder="Postal Code 邮编" id="pscode" required>
+                <select id="resident2024" required>
+                    <option value="" disabled selected>Were you a Canadian resident for all of 2024? 您是否2024年全年居住在加拿大？</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <div id="moveDateContainer">
+                    <input type="text" placeholder="If moved in 2024, date of move 如果2024年搬过身份，请输入搬家日期" id="moveDate">
+                </div>
+                <input type="email" placeholder="Email Address 邮箱地址" id="email" required>
+                <input type="tel" placeholder="Phone Number 手机号码" id="phone" required>
+                <input type="text" placeholder="Current Province 现居省份" id="currentProvince" required>
+                <select id="provinceChange19" required>
+                    <option value="" disabled selected>Did your province change after you turned 19? 您在19岁以后是否搬过省份？</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <input type="text" placeholder="Citizenship 国籍" id="citizenship" required>
+                <select id="maritalStatus 婚姻状况" required>
+                    <option value="" disabled selected>Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Common Law">Common Law</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+                <select id="dependents" required>
+                    <option value="" disabled selected>Any Dependents? 是否有孩子？</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <select id="firstTimeFiling" required>
+                    <option value="" disabled selected>Is this your first time filing taxes? 这是您第一次报税吗？</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <input type="number" placeholder="Year entered Canadian Post Secondary Institution 在加拿大上大学的年份" id="yearEntered" required>
+                <select id="craAccount" required>
+                    <option value="" disabled selected>Do you have a CRA My Account? 请问您有CRA账户吗？</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <input type="text" placeholder="First non-tourist entry to Canada 第一次非旅游进入加拿大的日期" id="firstEntryDate" required>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                <script>
+                    flatpickr("#firstEntryDate", { dateFormat: "Y-m-d" });
+                </script>
+                <br>
+                <div class="main-div" id="housing-div">
+                    <h3>Canada-Ontario Housing Benefits</h3>
+                    <p>注意：上报信息必须有证据 (银行账单/房屋合同)。如被抽查，需上传凭证。</p>
+                    <br>
+                    <div id="yearlyHousingInfo"></div>
+                    <button type="button" class="add-year-button" id="addYearButton">+ Add Housing Year Info</button>
+                </div>
+                <div class="submit-container">
+                    <button type="submit">Submit All</button>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
-    <div id = "s-div" class = "su-div">
-		<h3>You have signed up successfully</h3>
-		<p id="user_para">Welcome to our website</p>
-		<button onclick="login()">Login</button>
-    </div>
+        const firebaseConfig = {
+            apiKey: "AIzaSyApoIAeZBeF6CKLT13E1eNOBmt80CdWJLg",
+            authDomain: "tax-tr-2024.firebaseapp.com",
+            databaseURL: "https://tax-tr-2024-default-rtdb.firebaseio.com/",
+            projectId: "tax-tr-2024",
+            storageBucket: "tax-tr-2024.appspot.com",
+            messagingSenderId: "1091702477031",
+            appId: "1:1091702477031:web:451d59ea845c95dbf71242",
+            measurementId: "G-0CF8GNSMZW"
+        };
 
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
 
-    <div id = "user-div" class = "loggedin-div">
-		<h3>Welcome User</h3>
-		<p id="user_para">Welcome to our website. You are logged in.</p>
-		<button onclick="logout()">Logout</button>
-    </div>
+        flatpickr("#moveDate", { dateFormat: "Y-m-d" });
 
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCmK-ufQrNKeFrwh9rp39hRywNRhf6dR4M",
-        authDomain: "loginweb-e68d8.firebaseapp.com",
-        databaseURL: "https://loginweb-e68d8.firebaseio.com",
-        projectId: "loginweb-e68d8",
-        storageBucket: "loginweb-e68d8.appspot.com",
-        messagingSenderId: "132737705799",
-      };
-      firebase.initializeApp(config);
+        document.getElementById('resident2024').addEventListener('change', function () {
+            const moveDateContainer = document.getElementById('moveDateContainer');
+            moveDateContainer.style.display = this.value === "NO" ? "block" : "none";
+            if (this.value !== "NO") document.getElementById('moveDate').value = "";
+        });
+
+        document.getElementById('addYearButton').addEventListener('click', () => {
+            const container = document.getElementById('yearlyHousingInfo');
+            const yearDiv = document.createElement('div');
+            yearDiv.className = 'year-section';
+            yearDiv.innerHTML = `
+                    <input type="number" placeholder="Year (年份)" required>
+                    <input type="number" placeholder="Total rent paid 总交房租" required>
+                    <input type="number" placeholder="Total property tax paid 本年度所交房产税(租房的话为0)">
+                    <select required>
+                        <option value="" disabled selected>Did you reside in a student residence? (yes/no) 本年度是否住过学生宿舍？</option>
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                    </select>
+                    <input type="text" placeholder="Address 地址 (unit, street, city, province)" required>
+                    <input type="text" placeholder="Postal Code 邮编" required>
+                    <input type="number" placeholder="Number of months resident 本年所租时长" required>
+                    <select required>
+                        <option value="" disabled selected>Long-term care home? (YES/NO)</option>
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                    </select>
+                    <select required>
+                        <option value="" disabled selected>Landlord or municipality 房东租房 or 政府租房</option>
+                        <option value="Landlord">Landlord 房东租房</option>
+                        <option value="Municipality">Municipality 政府租房</option>
+                    </select>
+                `;
+            container.appendChild(yearDiv);
+        });
+
+        document.getElementById('combinedForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const sinField = document.getElementById('sin');
+            if (!sinField || !sinField.value.trim()) {
+                alert("SIN is required.");
+                return;
+            }
+
+            const sin = sinField.value.trim();
+            const userData = {
+                firstName: document.getElementById('firstName')?.value || "",
+                lastName: document.getElementById('lastName')?.value || "",
+                dob: document.getElementById('dob')?.value || "",
+                province2024: document.getElementById('province2024')?.value || "",
+                address: document.getElementById('address')?.value || "",
+                resident2024: document.getElementById('resident2024')?.value || "",
+                moveDate: document.getElementById('moveDate')?.value || "",
+                email: document.getElementById('email')?.value || "",
+                phone: document.getElementById('phone')?.value || "",
+                currentProvince: document.getElementById('currentProvince')?.value || "",
+                provinceChange19: document.getElementById('provinceChange19')?.value || "",
+                citizenship: document.getElementById('citizenship')?.value || "",
+                maritalStatus: document.getElementById('maritalStatus')?.value || "",
+                dependents: document.getElementById('dependents')?.value || "",
+                firstTimeFiling: document.getElementById('firstTimeFiling')?.value || "",
+                yearEntered: document.getElementById('yearEntered')?.value || "",
+                craAccount: document.getElementById('craAccount')?.value || "",
+                firstEntryDate: document.getElementById('firstEntryDate')?.value || ""
+            };
+
+            const housingSections = document.querySelectorAll('#yearlyHousingInfo .year-section');
+
+            let housingInfo = null;
+
+            if (housingSections.length > 0) {
+                const entries = Array.from(housingSections).map(section => {
+                    const inputs = section.querySelectorAll('input, select');
+                    if (inputs.length < 9) return null;
+
+                    const [year, rent, tax, residence, address, postalCode, months, careHome, landlord] = inputs;
+
+                    return {
+                        year: year?.value || "",
+                        totalRentPaid: rent?.value || "",
+                        totalPropertyTaxPaid: tax?.value || "0",
+                        studentResidence: residence?.value || "",
+                        address: address?.value || "",
+                        postalCode: postalCode?.value || "",
+                        monthsResident: months?.value || "",
+                        longTermCareHome: careHome?.value || "",
+                        housingType: landlord?.value || ""
+                    };
+                }).filter(info => info !== null);
+
+                housingInfo = entries.length > 0 ? entries : null; // Only assign array if entries exist
+            }
+            try {
+                await set(ref(database, `users/${sin}`), {
+                    userData: userData,
+                    housingInfo: housingInfo // Always present; null if no valid entries
+                });
+                window.location.href = "thankyou.html";
+            } catch (error) {
+                console.error("Error submitting data:", error);
+                alert("Error submitting data. Please try again.");
+            }
+        });
     </script>
-    <script src="index.js"></script>
-    
-    
 </body>
 </html>
