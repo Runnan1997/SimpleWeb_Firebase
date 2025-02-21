@@ -1,10 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - T&R Tax Services</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        nav {
+            background-color: #FFC771;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .showcase {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            max-width: 1000px;
+            width: 100%;
+            margin: 200px auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .showcase h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #FFC771;
+        }
+
+        .showcase p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .showcase h1 {
+                font-size: 2rem;
+            }
+
+            .showcase p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <div class="logo">T&R Tax Services 泰润信德</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="book.html">Consultation</a>
+        <a href="about.html">About Us</a>
+    </div>
+</nav>
+
+<section class="showcase">
+    <h1>About Us</h1>
+    <p>Welcome to T&R Tax Services. We are committed to providing fast, reliable, and hassle-free tax filing services. Our experienced team ensures that you receive the best guidance and support tailored to your needs. Let us handle the details while you focus on what matters most.</p>
+</section>
 </body>
+
 </html>

@@ -1,10 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        nav {
+            background-color: #FFC771;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header h1 {
+            margin: 0;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 100px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h2 {
+            text-align: center;
+        }
+        .content form {
+            display: flex;
+            flex-direction: column;
+        }
+        .content form label {
+            margin: 10px 0 5px 0;
+        }
+        .content form input, .content form select, .content form textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        .content form button {
+            padding: 10px;
+            font-size: 18px;
+            background: #FFC771;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .content form button:hover {
+            background: #FF9100;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">T&R Tax Services 泰润信德</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="book.html">Consultation</a>
+            <a href="about.html">About Us</a>
+        </div>
+    </nav>
+
+    <section class="content container">
+        <h2>Consultation Details</h2>
+        <form id="appointmentForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Let us know what you are interested..." rows="4"></textarea>
+
+            <button type="button" onclick="sendFormData()">Book Consultation</button>
+        </form>
+    </section>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyApoIAeZBeF6CKLT13E1eNOBmt80CdWJLg",
+            authDomain: "tax-tr-2024.firebaseapp.com",
+            projectId: "tax-tr-2024",
+            storageBucket: "tax-tr-2024.appspot.com",
+            messagingSenderId: "1091702477031",
+            appId: "1:1091702477031:web:451d59ea845c95dbf71242",
+            measurementId: "G-0CF8GNSMZW",
+            databaseURL: "https://tax-tr-2024-default-rtdb.firebaseio.com/"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Function to send form data to Firebase
+        window.sendFormData = function () {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !phone) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                timestamp: new Date().toISOString()
+            };
+
+            set(ref(database, 'consultations/' + phone), userData)
+                .then(() => {
+                    alert('Your consultation request has been submitted successfully! Our customer services will contact you within 24 hour.');
+                    document.getElementById('appointmentForm').reset();
+                })
+                .catch((error) => {
+                    console.error('Error writing to database:', error);
+                    alert('An error occurred while submitting your request. Please try again.');
+                });
+        }
+    </script>
 </body>
+
+
+
 </html>
