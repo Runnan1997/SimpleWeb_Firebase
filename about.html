@@ -71,24 +71,50 @@
             font-size: 0.9rem;
         }
 
-        .showcase {
+        .hero-section {
             background-color: #ffffff;
-            padding: 60px 20px;
-            max-width: 1000px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1200px; /* ✅ Made both sections the same width */
             width: 100%;
-            margin: 100px auto;
+            margin: 40px auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
 
-        .showcase h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #FFC771;
+        .hero-image {
+            max-width: 50%;
         }
 
-        .showcase p {
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .hero-content {
+            max-width: 45%;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .hero-content h2 {
+            margin-top: 25px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .hero-content p {
             font-size: 1.2rem;
             color: #555;
             line-height: 1.6;
@@ -106,8 +132,8 @@
         }
 
         .wechat-container img {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             margin-top: 15px;
             border-radius: 10px;
         }
@@ -129,12 +155,13 @@
                 gap: 10px;
             }
 
-            .showcase h1 {
-                font-size: 2rem;
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .showcase p {
-                font-size: 1rem;
+            .hero-content,.hero-image {
+                max-width: 100%;
             }
 
             .nav-links {
@@ -143,8 +170,8 @@
             }
 
             .wechat-logo img {
-                width: 100px;
-                height: 100px;
+                width: 70px;
+                height: 70px;
             }
 
             .translate-container {
@@ -168,18 +195,24 @@
         </div>
     </nav>
 
-    <section class="showcase">
-        <h1>About Us</h1>
-        <p>At <strong>T&R Tax</strong>, we make taxes easy. With years of experience, we know how to get you the best refund.</p>
-        <p>Our team includes former government tax employees who worked with professional CPAs to ensure accuracy. We’re also certified through the <em>Community Volunteer Income Tax Program (CVITP)</em>, so you can trust us.</p>
-        <br>
-        <p style="font-weight: bold">Need help after filing? We’re here for you.</p>
-        <p>Let <strong>T&R Tax</strong> handle your taxes, so you don’t have to!</p>
-        <div class="wechat-container">
-            <span>Scan to connect on WeChat: </span>
-            <img src="IMG_4418.jpg" alt="WeChat QR Code">
+    <div class="hero-section">
+        <div class="hero-image">
+            <img src="泰润信德.PNG" alt="Main Visual">
         </div>
-    </section>
+        <div class="hero-content">
+            <h1>About Us</h1>
+            <p>At <strong>T&R Tax</strong>, we make taxes easy. With years of experience, we know how to get you the best refund.</p>
+            <p>Our team includes former government tax employees who worked with professional CPAs to ensure accuracy. We’re also certified through the <em>CVITP</em>, so you can trust us.</p>
+            <br>
+            <p style="font-weight: bold">Need help after filing? We’re here for you.</p>
+            <p>Let <strong>T&R Tax</strong> handle your taxes, so you don’t have to!</p>
+            <div class="wechat-container">
+                <span>Scan to connect on WeChat: </span>
+                <img src="IMG_4418.jpg" alt="WeChat QR Code">
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
