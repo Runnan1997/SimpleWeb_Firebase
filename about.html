@@ -13,18 +13,27 @@
             padding: 0;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
         }
 
         nav {
             background-color: #FFC771;
             padding: 15px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -50,6 +59,18 @@
             color: #fff;
         }
 
+        .translate-container {
+            margin-right: auto;
+        }
+
+        .goog-te-combo {
+            width: 140px;
+            padding: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+        }
+
         .showcase {
             background-color: #ffffff;
             padding: 60px 20px;
@@ -73,7 +94,41 @@
             line-height: 1.6;
         }
 
+        .wechat-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .wechat-container img {
+            width: 120px;
+            height: 120px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #FFC771;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: auto;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
             .showcase h1 {
                 font-size: 2rem;
             }
@@ -86,24 +141,59 @@
                 flex-direction: column;
                 gap: 10px;
             }
+
+            .wechat-logo img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .translate-container {
+                width: 100%;
+                text-align: right;
+            }
         }
     </style>
 </head>
 
 <body>
-<nav>
-    <div class="logo">T&R Tax Services</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="book.html">Consultation</a>
-        <a href="about.html">About Us</a>
-    </div>
-</nav>
+    <nav>
+        <div class="logo">T&R Tax Services</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="book.html">Book/Ask Questions</a>
+        </div>
+        <div class="translate-container">
+            <div id="google_translate_element"></div>
+        </div>
+    </nav>
 
-<section class="showcase">
-    <h1>About Us</h1>
-    <p>Welcome to T&R Tax Services. We are committed to providing fast, reliable, and hassle-free tax filing services. Our experienced team ensures that you receive the best guidance and support tailored to your needs. Let us handle the details while you focus on what matters most.</p>
-</section>
+    <section class="showcase">
+        <h1>About Us</h1>
+        <p>At <strong>T&R Tax</strong>, we make taxes easy. With years of experience, we know how to get you the best refund.</p>
+        <p>Our team includes former government tax employees who worked with professional CPAs to ensure accuracy. We’re also certified through the <em>Community Volunteer Income Tax Program (CVITP)</em>, so you can trust us.</p>
+        <br>
+        <p style="font-weight: bold">Need help after filing? We’re here for you.</p>
+        <p>Let <strong>T&R Tax</strong> handle your taxes, so you don’t have to!</p>
+        <div class="wechat-container">
+            <span>Scan to connect on WeChat: </span>
+            <img src="IMG_4418.jpg" alt="WeChat QR Code">
+        </div>
+    </section>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,zh-CN',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <footer>
+        &copy; 2025 T&R Tax Services. All rights reserved.</a>
+    </footer>
 </body>
 
 </html>

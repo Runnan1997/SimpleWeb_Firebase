@@ -12,18 +12,27 @@
             padding: 0;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
         }
 
         nav {
             background-color: #FFC771;
             padding: 15px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -47,6 +56,18 @@
 
         .nav-links a:hover {
             color: #fff;
+        }
+
+        .translate-container {
+            margin-right: auto;
+        }
+
+        .goog-te-combo {
+            width: 140px;
+            padding: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
         }
 
         .hero-section {
@@ -117,7 +138,6 @@
             padding: 10px;
             width: 200px;
             font-size: 1rem;
-            /*border: 1px solid #ccc;*/
             border-radius: 6px;
             margin-right: 10px;
         }
@@ -136,7 +156,23 @@
             background-color: #FF9100;
         }
 
+        footer {
+            background-color: #FFC771;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: auto;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
             .hero-section {
                 flex-direction: column;
                 text-align: center;
@@ -150,6 +186,11 @@
                 width: 100%;
                 margin-top: 10px;
             }
+
+            .translate-container {
+                width: 100%;
+                text-align: right;
+            }
         }
     </style>
 </head>
@@ -159,8 +200,11 @@
         <div class="logo">T&R Tax Services</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="book.html">Consultation</a>
             <a href="about.html">About Us</a>
+            <a href="book.html">Book/Ask Questions</a>
+        </div>
+        <div class="translate-container">
+            <div id="google_translate_element"></div>
         </div>
     </nav>
 
@@ -177,7 +221,7 @@
             <a class="btn" onclick="verifyCode()">  Submit  </a>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         function verifyCode() {
             const correctCode = "TR2024Tax"; // Replace with your desired verification code
             const enteredCode = document.getElementById("verificationCode").value.trim();
@@ -188,8 +232,19 @@
                 alert("Incorrect code. Please try again.");
             }
         }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,zh-CN',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <footer>
+        &copy; 2025 T&R Tax Services. All rights reserved.</a>
+    </footer>
 
 </body>
-
 </html>
