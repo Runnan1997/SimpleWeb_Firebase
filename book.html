@@ -139,7 +139,7 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
-            <a href="book.html">Book/Ask Questions</a>
+            <a href="book.html">Book Service/Ask Questions</a>
         </div>
         <div class="translate-container">
             <div id="google_translate_element"></div>
@@ -207,8 +207,9 @@
 
             set(ref(database, 'consultations/' + phone), userData)
                 .then(() => {
-                    alert('Your consultation request has been submitted successfully! Our customer services will contact you within 24 hour.');
+                    alert('Message Sent! Our customer services will contact you within 24 hour. \n信息已发出！我们的客服会在24小时内联系您。');
                     document.getElementById('appointmentForm').reset();
+                    window.location.href = "index.html";
                 })
                 .catch((error) => {
                     console.error('Error writing to database:', error);
